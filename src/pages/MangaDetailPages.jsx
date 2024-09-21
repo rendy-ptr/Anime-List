@@ -1,9 +1,9 @@
 import React from "react";
-import useFetchDetailAnime from "../utils/fetchDetailAnime";
+import useFetchDetailManga from "../utils/fetchDetailManga";
 import { HashLoader } from "react-spinners";
 
-const AnimeDetailPages = () => {
-  const { data, error, isLoading } = useFetchDetailAnime();
+const MangaDetailPages = () => {
+  const { data, error, isLoading } = useFetchDetailManga();
 
   if (isLoading)
     return (
@@ -15,7 +15,6 @@ const AnimeDetailPages = () => {
   if (error) return <div>Error: {error}</div>;
 
   if (!data || data.length === 0) return <div>No anime data available</div>;
-
   return (
     <div className="container mx-auto my-6">
       <div className="flex flex-col md:flex-row w-full">
@@ -44,19 +43,13 @@ const AnimeDetailPages = () => {
             <p>Favorites: {data.favorites}</p>
             <p>Year: {data.year}</p>
             <p>Season: {data.season}</p>
-            <p>Studios: {data.studios[0].name}</p>
-            <p>Genres: {data.genres[0].name}</p>
-            {data.streaming[0]?.name && <p>Streaming: {data.streaming[0].name}</p>}
-            {data.demographics[0]?.name && <p>Demographics: {data.demographics[0].name}</p>}
+            {data.demographics[0]?.name && (
+              <p>Demographics: {data.demographics[0].name}</p>
+            )}
             <p>External : {data.external[0].name}</p>
-            <p>Relations: {data.relations[1].entry[0].name}</p>
-            <p className="text-sm">
-              Theme 
-                <li>Openings :  {data.theme.openings[0]}</li>
-                <li>Openings :  {data.theme.openings[1]}</li>
-                <li>Endings :  {data.theme.endings[0]}</li>
-                <li>Endings :  {data.theme.endings[1]}</li>
-            </p>
+            {data.relations[1]?.entry[0]?.name && (
+              <p>Relations: {data.relations[1].entry[0].name}</p>
+            )}
           </div>
         </div>
       </div>
@@ -69,4 +62,4 @@ const AnimeDetailPages = () => {
   );
 };
 
-export default AnimeDetailPages;
+export default MangaDetailPages;

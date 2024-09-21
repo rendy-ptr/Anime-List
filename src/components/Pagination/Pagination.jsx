@@ -8,7 +8,6 @@ const Pagination = (props) => {
     pageNumbers.push(i);
   }
   
-
   return (
     <div className="join my-6 flex justify-center">
       {pageNumbers.map((number, index) => (

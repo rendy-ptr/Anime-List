@@ -22,7 +22,6 @@ const TopAnimePages = () => {
   if (error) return <div>Error: {error}</div>;
   if (!data || data.length === 0) return <div>No anime data available</div>;
 
-  // Menghitung index data yang akan ditampilkan
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);

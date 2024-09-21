@@ -7,6 +7,7 @@ import './index.css'
 import TopAnimePages from './pages/TopAnimePages.jsx'
 import TopMangaPages from './pages/TopMangaPages';
 import AnimeDetailPages from './pages/AnimeDetailPages.jsx'
+import MangaDetailPages from './pages/MangaDetailPages.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/top-manga',
         element: <TopMangaPages />  // Rute untuk halaman About
+      },
+      {
+        path: '/top-manga/:mal_id',
+        element: <MangaDetailPages/>  // Rute untuk halaman About
       },
     ],
   },
